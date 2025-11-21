@@ -9,6 +9,17 @@ resource "linode_lke_cluster" "test" {
     tags        = ["test"]
     tier = "enterprise"
 
+    control_plane {
+      
+        acl {
+            enabled = true
+            addresses {
+                ipv4 = ["177.181.5.69/32"]
+            }
+        }
+    }
+
+
     vpc_id = linode_vpc.test.id
     subnet_id = linode_vpc_subnet.test.id
 
